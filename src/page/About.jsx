@@ -29,7 +29,17 @@ function About() {
       });
   };
 
+  const pageSize =10;
+let currentPage =1;
   const columns = [
+    {
+      title: "ລະດັບ",
+      key: `_id`,
+      render: (text, record, index) => (
+        currentPage-1
+        
+      )*pageSize+index+1
+    },
     
     {
       title: "ຫົວຂໍ້",
@@ -112,7 +122,11 @@ function About() {
   return (
     <div className="teams-container">
 
-      <Table loading={loading} columns={columns} dataSource={state} />
+      <Table loading={loading} columns={columns} dataSource={state} pagination={{
+          onChange:(page)=>{
+            currentPage = page
+          }
+        }}/>
 
       <Modal
         title={<span className="custom-modal-title">ແກ້ໄຂຂໍ້ມູນກ່ຽວກັບ</span>}

@@ -32,7 +32,17 @@ function Customer() {
       });
   };
 
+  const pageSize =10;
+let currentPage =1;
   const columns = [
+    {
+      title: "ລະດັບ",
+      key: `_id`,
+      render: (text, record, index) => (
+        currentPage-1
+        
+      )*pageSize+index+1
+    },
     {
       title: "ຊື່",
       dataIndex: "name",
@@ -137,7 +147,11 @@ function Customer() {
         ເພີ່ມ
       </Button>
 
-      <Table loading={loading} columns={columns} dataSource={state} />
+      <Table loading={loading} columns={columns} dataSource={state} pagination={{
+          onChange:(page)=>{
+            currentPage = page
+          }
+        }}/>
 
       <Modal
         title={<span className="custom-modal-title">ເພີ່ມຂໍ້ມູນລູກຄ້າ</span>}

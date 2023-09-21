@@ -40,8 +40,17 @@ function Teams() {
         setstate(result.data);
       });
   };
-
+const pageSize =10;
+let currentPage =1;
   const columns = [
+    {
+      title: "ລະດັບ",
+      key: `_id`,
+      render: (text, record, index) => (
+        currentPage-1
+        
+      )*pageSize+index+1
+    },
     {
       title: "ຊື່",
       dataIndex: "name_en",
@@ -163,7 +172,11 @@ function Teams() {
       </div>
 
       <div className="flex-1 overflow-y-auto padding-16px">
-        <Table loading={loading} columns={columns} dataSource={state?.data} />
+        <Table loading={loading} columns={columns} dataSource={state?.data} pagination={{
+          onChange:(page)=>{
+            currentPage = page
+          }
+        }}/>
       </div>
 
       <Modal
