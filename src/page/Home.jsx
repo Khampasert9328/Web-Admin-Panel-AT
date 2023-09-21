@@ -43,14 +43,14 @@ function Home() {
       title: "ຮູບພາບທີ1",
       dataIndex: "logo_en",
       render: (logo_en) => (
-        <img className="w-20" src={`https://api-at.onrender.com/${logo_en}`} />
+        <img className="w-20"loading="lazy" src={`https://api-at.onrender.com/${logo_en}`} />
       ),
     },
     {
       title: "ຮູບພາບທີ2",
       dataIndex: "image_en",
       render: (image_en) => (
-        <img className="w-20" src={`https://api-at.onrender.com/${image_en}`} />
+        <img className="w-20" loading="lazy" src={`https://api-at.onrender.com/${image_en}`} />
       ),
     },
     {
