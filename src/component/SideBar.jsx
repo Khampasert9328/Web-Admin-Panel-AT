@@ -52,13 +52,13 @@ const SideBar = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["/home"]}
+          defaultSelectedKeys={["/"]}
           onClick={(item) => {
             navigation(item.key);
           }}
           items={[
             {
-              key: "/home",
+              key: "/",
               icon: <HomeOutlinedIcon fontSize="medium"/>,
               label: "Home",
             },
