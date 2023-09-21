@@ -37,7 +37,7 @@ const InsertFormService = ({ onClose }) => {
   
       // Send a POST request with Axios
       await axios.post(
-        "http://localhost:8000/api/v1/service/insertsevice?language=en",
+        `${apiurl}/api/v1/service/insertsevice?language=en`,
         formDataToSend
       );
   

@@ -24,7 +24,7 @@ function Products() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get("http://localhost:8000/api/v1/products/getproducts?language=en")
+      .get(`${apiurl}/api/v1/products/getproducts?language=en`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -55,7 +55,7 @@ function Products() {
       title: "ຮູບພາບ",
       dataIndex: "logo_en",
       render: (image_en) => (
-        <img className="w-20 h-15" src={`http://localhost:8000/${image_en}`} />
+        <img className="w-20 h-15" src={`${apiurl}/${image_en}`} />
       ),
     },
 
@@ -115,7 +115,7 @@ function Products() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `http://localhost:8000/api/v1/products/deleteproducts/${deleteItemId}`
+        `${apiurl}/api/v1/products/deleteproducts/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

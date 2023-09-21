@@ -35,7 +35,7 @@ const InsertFormCutomer = ({ onClose }) => {
   
       // Send a POST request with Axios
       await axios.post(
-        "http://localhost:8000/api/v1/customers/insertcustomers",
+        `${apiurl}/api/v1/customers/insertcustomers`,
         formDataToSend
       );
   

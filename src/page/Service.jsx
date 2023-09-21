@@ -24,7 +24,7 @@ function Service() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get("http://localhost:8000/api/v1/service/getsevice?language=en")
+      .get(`${apiurl}/api/v1/service/getsevice?language=en`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -57,7 +57,7 @@ function Service() {
       render: (image_en) => (
         <img
           className="bg-gray-200 w-20"
-          src={`http://localhost:8000/${image_en}`}
+          src={`${apiurl}/${image_en}`}
         />
       ),
     },
@@ -119,7 +119,7 @@ function Service() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `http://localhost:8000/api/v1/service/deletesevice/${deleteItemId}`
+        `${apiurl}/api/v1/service/deletesevice/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

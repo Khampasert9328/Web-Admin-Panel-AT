@@ -41,7 +41,7 @@ const InsertFormContact = ({ onClose }) => {
   
       // Send a POST request with Axios
       await axios.post(
-        "http://localhost:8000/api/v1/contact/insertcontact?language=en",
+        `${apiurl}/api/v1/contact/insertcontact?language=en`,
         formDataToSend
       );
   

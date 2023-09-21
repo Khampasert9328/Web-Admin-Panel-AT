@@ -33,7 +33,7 @@ const EditFormAbout = ({ onClose, data, Setdata }) => {
 
       // Send an HTTP PUT request to update the data
       await axios.put(
-        `http://localhost:8000/api/v1/about/updateabout/${data._id}`,
+        `${apiurl}/api/v1/about/updateabout/${data._id}`,
         formDataToSend
       );
 
@@ -67,7 +67,7 @@ const EditFormAbout = ({ onClose, data, Setdata }) => {
 
       <img
         className="w-30 h-30 py-2"
-        src={`http://localhost:8000/${data.logo_en}`}
+        src={`${apiurl}/${data.logo_en}`}
         alt=""
       />
       

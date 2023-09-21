@@ -33,7 +33,7 @@ const EditFormCustomer = ({ onClose, data, Setdata }) => {
 
       // Send an HTTP PUT request to update the data
       await axios.put(
-        `http://localhost:8000/api/v1/customers/updatecustomer/${data._id}`,
+        `${apiurl}/api/v1/customers/updatecustomer/${data._id}`,
         formDataToSend
       );
 
@@ -67,7 +67,7 @@ const EditFormCustomer = ({ onClose, data, Setdata }) => {
 
       <img
         className="w-30 h-30 py-2"
-        src={`http://localhost:8000/${data.logo}`}
+        src={`${apiurl}/${data.logo}`}
         alt=""
       />
       
