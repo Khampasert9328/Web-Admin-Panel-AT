@@ -9,7 +9,6 @@ import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutl
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
-import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded';
 import AppRoute from "./AppRoute/AppRoute";
 import React, { useState,useEffect } from "react";
 import { Layout, Menu, Button, theme } from "antd";
@@ -53,13 +52,13 @@ const SideBar = () => {
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={["/"]}
+          defaultSelectedKeys={["/home"]}
           onClick={(item) => {
             navigation(item.key);
           }}
           items={[
             {
-              key: "/",
+              key: "/home",
               icon: <HomeOutlinedIcon fontSize="medium"/>,
               label: "Home",
             },
