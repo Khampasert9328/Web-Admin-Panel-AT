@@ -37,7 +37,7 @@ const InsertFormProduct = ({ onClose }) => {
   
       // Send a POST request with Axios
       await axios.post(
-        `${apiurl}/api/v1/products/insertproducts?language=en`,
+        `https://api-at.onrender.com/api/v1/products/insertproducts?language=en`,
         formDataToSend
       );
   

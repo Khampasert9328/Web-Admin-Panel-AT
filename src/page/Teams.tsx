@@ -33,7 +33,7 @@ function Teams() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get<DeleteTeamsModels>(`${apiurl}/api/v1/teams/getteams`)
+      .get<DeleteTeamsModels>(`https://api-at.onrender.com/api/v1/teams/getteams`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -73,7 +73,7 @@ function Teams() {
       title: "ຮູບພາບ",
       dataIndex: "logo_en",
       render: (record: Datum) => (
-        <Avatar imageSrc={`${apiurl}/${record}`} size={100} />
+        <Avatar imageSrc={`https://api-at.onrender.com/${record}`} size={100} />
       ),
     },
 
@@ -130,7 +130,7 @@ function Teams() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `${apiurl}/api/v1/teams/deleteteams/${deleteItemId}`
+        `https://api-at.onrender.com/api/v1/teams/deleteteams/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

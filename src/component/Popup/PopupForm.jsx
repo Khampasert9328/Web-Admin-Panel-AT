@@ -36,7 +36,7 @@ const MyFormComponent = ({ onClose }) => {
       formDataToSend.append("logo_en", formData.logo_en);
 
       // Send a POST request with Axios
-      await axios.post(`${apiurl}/api/v1/teams/insertteams?language=en`, formDataToSend);
+      await axios.post(`https://api-at.onrender.com/api/v1/teams/insertteams?language=en`, formDataToSend);
 
       // Handle success, e.g., show a success message
       console.log("Data submitted successfully!");

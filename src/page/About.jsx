@@ -21,7 +21,7 @@ function About() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get(`${apiurl}/api/v1/about/getabout?language=en`)
+      .get(`https://api-at.onrender.com/api/v1/about/getabout?language=en`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -40,7 +40,7 @@ function About() {
       title: "ໂຄງສ້າງ",
       dataIndex: "logo_en",
       render: (logo_en) => (
-        <img className="w-20" src={`${apiurl}/${logo_en}`} />
+        <img className="w-20" src={`https://api-at.onrender.com/${logo_en}`} />
       ),
     },
    
@@ -93,7 +93,7 @@ function About() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `${apiurl}/api/v1/about/deleteabout/${deleteItemId}`
+        `https://api-at.onrender.com/api/v1/about/deleteabout/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

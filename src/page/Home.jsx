@@ -25,7 +25,7 @@ function Home() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get(`${apiurl}/api/v1/home/gethome?language=en`)
+      .get(`https://api-at.onrender.com/api/v1/home/gethome?language=en`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -43,14 +43,14 @@ function Home() {
       title: "ຮູບພາບທີ1",
       dataIndex: "logo_en",
       render: (logo_en) => (
-        <img className="w-20" src={`${apiurl}/${logo_en}`} />
+        <img className="w-20" src={`https://api-at.onrender.com/${logo_en}`} />
       ),
     },
     {
       title: "ຮູບພາບທີ2",
       dataIndex: "image_en",
       render: (image_en) => (
-        <img className="w-20" src={`${apiurl}/${image_en}`} />
+        <img className="w-20" src={`https://api-at.onrender.com/${image_en}`} />
       ),
     },
     {
@@ -111,7 +111,7 @@ function Home() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `${apiurl}/api/v1/home/deletehome/${deleteItemId}`
+        `https://api-at.onrender.com/api/v1/home/deletehome/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

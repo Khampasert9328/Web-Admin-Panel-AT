@@ -35,7 +35,7 @@ const EditFormTeams = ({ onClose, data, Setdata }) => {
 
       // Send an HTTP PUT request to update the data
       await axios.put(
-        `${apiurl}/api/v1/teams/updateteams/${data._id}`,
+        `https://api-at.onrender.com/api/v1/teams/updateteams/${data._id}`,
         formDataToSend
       );
 
@@ -82,7 +82,7 @@ const EditFormTeams = ({ onClose, data, Setdata }) => {
       >
         <Input />
       </Form.Item>
-      <img className="w-30 h-30" src={`${apiurl}/${data.logo_en}`} alt="" />
+      <img className="w-30 h-30" src={`https://api-at.onrender.com/${data.logo_en}`} alt="" />
       <input type="file" name="logo_en" onChange={handleImage} />
 
       <Form.Item style={{ marginTop: "auto", textAlign: "right" }}>

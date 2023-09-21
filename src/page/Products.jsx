@@ -24,7 +24,7 @@ function Products() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get(`${apiurl}/api/v1/products/getproducts?language=en`)
+      .get(`https://api-at.onrender.com/api/v1/products/getproducts?language=en`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -55,7 +55,7 @@ function Products() {
       title: "ຮູບພາບ",
       dataIndex: "logo_en",
       render: (image_en) => (
-        <img className="w-20 h-15" src={`${apiurl}/${image_en}`} />
+        <img className="w-20 h-15" src={`https://api-at.onrender.com/${image_en}`} />
       ),
     },
 
@@ -115,7 +115,7 @@ function Products() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `${apiurl}/api/v1/products/deleteproducts/${deleteItemId}`
+        `https://api-at.onrender.com/api/v1/products/deleteproducts/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

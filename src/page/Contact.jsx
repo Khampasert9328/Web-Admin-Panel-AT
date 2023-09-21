@@ -26,7 +26,7 @@ function Contact() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get(`${apiurl}/api/v1/contact/getcontact?language=en`)
+      .get(`https://api-at.onrender.com/api/v1/contact/getcontact?language=en`)
       .then((result) => {
         console.log(result);
         setloading(false);
@@ -77,7 +77,7 @@ function Contact() {
       render: (image_en) => (
         <img
           className="w-20 bg-white"
-          src={`${apiurl}/${image_en}`}
+          src={`https://api-at.onrender.com/${image_en}`}
         />
       ),
     },
@@ -142,7 +142,7 @@ function Contact() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `${apiurl}/api/v1/contact/deletecontact/${deleteItemId}`
+        `https://api-at.onrender.com/api/v1/contact/deletecontact/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

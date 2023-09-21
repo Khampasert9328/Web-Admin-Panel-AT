@@ -41,7 +41,7 @@ const EditFormHome = ({ onClose, data, Setdata }) => {
 
       // Send an HTTP PUT request to update the data
       await axios.put(
-        `${apiurl}/api/v1/home/updatehome/${data._id}`,
+        `https://api-at.onrender.com/api/v1/home/updatehome/${data._id}`,
         formDataToSend
       );
 
@@ -75,12 +75,12 @@ const EditFormHome = ({ onClose, data, Setdata }) => {
 
       <img
         className="w-30 h-30 py-2"
-        src={`${apiurl}/${data.logo_en}`}
+        src={`https://api-at.onrender.com/${data.logo_en}`}
         alt=""
       />
       <img
         className="w-30 h-20 py-2"
-        src={`${apiurl}/${data.image_en}`} 
+        src={`https://api-at.onrender.com/${data.image_en}`} 
         alt=""
       />
 

@@ -24,7 +24,7 @@ function Customer() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get(`${apiurl}/api/v1/customers/getcustomers`)
+      .get(`https://api-at.onrender.com/api/v1/customers/getcustomers`)
       .then((result) => {
         console.log(result);
         setLoading(false);
@@ -47,7 +47,7 @@ function Customer() {
       dataIndex: "logo",
       render: (image_en) => (
         <div className="w-400px pr-30">
-          <img className="w-20" src={`${apiurl}/${image_en}`} />
+          <img className="w-20" src={`https://api-at.onrender.com/${image_en}`} />
         </div>
       ),
     },
@@ -107,7 +107,7 @@ function Customer() {
     try {
       // Send a DELETE request with Axios using the deleteItemId
       await axios.delete(
-        `${apiurl}/api/v1/customers/deletecustomers/${deleteItemId}`
+        `https://api-at.onrender.com/api/v1/customers/deletecustomers/${deleteItemId}`
       );
 
       // Handle success, e.g., show a success message or update the data

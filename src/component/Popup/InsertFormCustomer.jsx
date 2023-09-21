@@ -35,7 +35,7 @@ const InsertFormCutomer = ({ onClose }) => {
   
       // Send a POST request with Axios
       await axios.post(
-        `${apiurl}/api/v1/customers/insertcustomers`,
+        `https://api-at.onrender.com/api/v1/customers/insertcustomers`,
         formDataToSend
       );
   

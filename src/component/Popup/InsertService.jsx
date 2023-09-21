@@ -37,7 +37,7 @@ const InsertFormService = ({ onClose }) => {
   
       // Send a POST request with Axios
       await axios.post(
-        `${apiurl}/api/v1/service/insertsevice?language=en`,
+        `https://api-at.onrender.com/api/v1/service/insertsevice?language=en`,
         formDataToSend
       );
   
