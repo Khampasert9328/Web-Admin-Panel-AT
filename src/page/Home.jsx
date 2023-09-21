@@ -17,7 +17,6 @@ function Home() {
     logo: "",
     image: "",
   });
-  const [formHomeEditVisible, setFormHomeEditVisible] = useState(false);
   useEffect(() => {
     getData();
   }, []);
@@ -43,7 +42,7 @@ function Home() {
       title: "ຮູບພາບທີ1",
       dataIndex: "logo_en",
       render: (logo_en) => (
-        <img className="w-20"loading="lazy" src={`https://api-at.onrender.com/${logo_en}`} />
+        <img className="w-20"loading="lazy"  src={`https://api-at.onrender.com/${logo_en}`} />
       ),
     },
     {

@@ -1,11 +1,15 @@
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  ProfileOutlined,
-  WindowsOutlined,
-  CustomerServiceOutlined,
-  TeamOutlined,
 } from "@ant-design/icons";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
+import MenuOpenRoundedIcon from '@mui/icons-material/MenuOpenRounded';
 import AppRoute from "./AppRoute/AppRoute";
 import React, { useState,useEffect } from "react";
 import { Layout, Menu, Button, theme } from "antd";
@@ -56,37 +60,37 @@ const SideBar = () => {
           items={[
             {
               key: "/",
-              icon: <WindowsOutlined />,
+              icon: <HomeOutlinedIcon fontSize="medium"/>,
               label: "Home",
             },
             {
               key: "/about",
-              icon: <CustomerServiceOutlined />,
+              icon: <InfoOutlinedIcon fontSize="medium"/>,
               label: "About",
             },
             {
               key: "/service",
-              icon: <CustomerServiceOutlined />,
+              icon: <MedicalServicesOutlinedIcon fontSize="medium"/>,
               label: "Service",
             },
             {
               key: "/product",
-              icon: <ProfileOutlined />,
+              icon: <CategoryOutlinedIcon fontSize="medium"/>,
               label: "Product",
             },
             {
               key: "/customer",
-              icon: <CustomerServiceOutlined />,
+              icon: <SupportAgentOutlinedIcon fontSize="medium"/>,
               label: "Customer",
             },
             {
               key: "/team",
-              icon: <TeamOutlined />,
+              icon: <GroupsOutlinedIcon fontSize="medium"/>,
               label: "Team",
             },
             {
               key: "/contact",
-              icon: <CustomerServiceOutlined />,
+              icon: <ContactSupportOutlinedIcon fontSize="medium"/>,
               label: "Contact",
             },
           ]}
