@@ -11,6 +11,8 @@ function Contact() {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [formEditContactVisible, setFormEditContactVisible] = useState(false);
+
+  const [loadingimage, setLoadingimage] = useState(false);
   const [formData, setFormData] = useState({
     _id: "",
     tell_en: "",
@@ -86,9 +88,12 @@ let currentPage =1;
       dataIndex: "logo_en",
       render: (image_en) => (
         <img
-          className="w-20 bg-white"
-          src={`https://api-at.onrender.com/${image_en}`}
-        />
+            className={`${loadingimage ? "" : "image-fade-in"}`}
+            src={`https://api-at.onrender.com/${image_en}`}
+            alt="Image"
+            onLoad={() => setLoadingimage(false)}
+            style={{ width: "150px", height: "80px" }}
+          />
       ),
     },
 

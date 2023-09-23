@@ -9,6 +9,7 @@ function About() {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [formEditAboutVisible, setFormEditAboutVisible] = useState(false);
+  const [loadingimage, setLoadingimage] = useState(false);
   const [formData, setFormData] = useState({
     _id: "",
     title_en: "",
@@ -50,7 +51,13 @@ let currentPage =1;
       title: "ໂຄງສ້າງ",
       dataIndex: "logo_en",
       render: (logo_en) => (
-        <img className="w-20" src={`https://api-at.onrender.com/${logo_en}`} />
+        <img
+            className={`${loadingimage ? "" : "image-fade-in"}`}
+            src={`https://api-at.onrender.com/${logo_en}`}
+            alt="Image"
+            onLoad={() => setLoadingimage(false)}
+            style={{ width: "100px", height: "100px", background: "gray" }}
+          />
       ),
     },
    

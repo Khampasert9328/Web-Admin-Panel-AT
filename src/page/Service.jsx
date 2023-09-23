@@ -11,6 +11,7 @@ function Service() {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [formEditServiceVisible, setFormEditServiceVisible] = useState(false);
+  const [loadingimage, setLoadingimage] = useState(false);
   const [formData, setFormData] = useState({
     _id: "",
     name_en: "",
@@ -66,8 +67,12 @@ let currentPage =1;
       dataIndex: "logo_en",
       render: (image_en) => (
         <img
-          className="bg-gray-200 w-20"
+          className={`${loadingimage ? "" : "image-fade-in"}`}
+          
           src={`https://api-at.onrender.com/${image_en}`}
+          alt="Image"
+          onLoad={() => setLoadingimage(false)} 
+          style={{ width: '100px', height: '100px' ,background:'gray'}}
         />
       ),
     },
@@ -211,6 +216,19 @@ let currentPage =1;
         .service-container {
           height: 100%; /* Set the desired height here */
           overflow: auto; /* Add scrollbars if content overflows the container */
+        }
+        .image-fade-in {
+          opacity: 0;
+          animation: fadeIn 3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
         }
       `}</style>
     </div>

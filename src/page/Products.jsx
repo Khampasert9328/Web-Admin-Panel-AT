@@ -11,6 +11,7 @@ function Products() {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [formEditProductVisible, setFormEditProductVisible] = useState(false);
+  const [loadingimage, setLoadingimage] = useState(false);
   const [formData, setFormData] = useState({
     _id: "",
     name_en: "",
@@ -65,7 +66,14 @@ let currentPage =1;
       title: "ຮູບພາບ",
       dataIndex: "logo_en",
       render: (image_en) => (
-        <img className="w-20 h-15" src={`https://api-at.onrender.com/${image_en}`} />
+        <img
+        className={`${loadingimage ? "" : "image-fade-in"}`}
+        
+        src={`https://api-at.onrender.com/${image_en}`}
+        alt="Image"
+        onLoad={() => setLoadingimage(false)} 
+        style={{ width: '100px', height: '100px'}}
+      />
       ),
     },
 

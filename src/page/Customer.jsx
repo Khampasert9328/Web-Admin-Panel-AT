@@ -11,6 +11,8 @@ function Customer() {
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [formEditCustomerVisible, setFormEditCustomerVisible] = useState(false);
+
+  const [loadingimage, setLoadingimage] = useState(false);
   const [formData, setFormData] = useState({
     _id: "",
     name: "",
@@ -32,16 +34,13 @@ function Customer() {
       });
   };
 
-  const pageSize =10;
-let currentPage =1;
+  const pageSize = 10;
+  let currentPage = 1;
   const columns = [
     {
       title: "ລະດັບ",
       key: `_id`,
-      render: (text, record, index) => (
-        currentPage-1
-        
-      )*pageSize+index+1
+      render: (text, record, index) => (currentPage - 1) * pageSize + index + 1,
     },
     {
       title: "ຊື່",
@@ -57,7 +56,13 @@ let currentPage =1;
       dataIndex: "logo",
       render: (image_en) => (
         <div className="w-400px pr-30">
-          <img className="w-20" src={`https://api-at.onrender.com/${image_en}`} />
+          <img
+            className={`${loadingimage ? "" : "image-fade-in"}`}
+            src={`https://api-at.onrender.com/${image_en}`}
+            alt="Image"
+            onLoad={() => setLoadingimage(false)}
+            style={{ width: "100px", height: "100px", background: "white"}}
+          />
         </div>
       ),
     },
@@ -147,11 +152,16 @@ let currentPage =1;
         ເພີ່ມ
       </Button>
 
-      <Table loading={loading} columns={columns} dataSource={state} pagination={{
-          onChange:(page)=>{
-            currentPage = page
-          }
-        }}/>
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={state}
+        pagination={{
+          onChange: (page) => {
+            currentPage = page;
+          },
+        }}
+      />
 
       <Modal
         title={<span className="custom-modal-title">ເພີ່ມຂໍ້ມູນລູກຄ້າ</span>}

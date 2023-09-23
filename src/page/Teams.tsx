@@ -3,11 +3,12 @@ import { Space, Table, Button, Modal } from "antd";
 
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import axios from "axios";
-import Avatar from "../component/Avatar/Avatar";
 
 import FormTeams from "../component/Popup/PopupForm";
 import { Datum, DeleteTeamsModels } from "../models/DeleteTeamsModels";
 import EditFormTeams from "../component/Popup/PopUpEdit/EditFormTeams";
+
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 
 function Teams() {
   const [state, setstate] = useState<DeleteTeamsModels | null>(null);
@@ -20,12 +21,20 @@ function Teams() {
   );
 
   const [formData, setFormData] = useState({
-    _id: '',
+    _id: "",
     name_en: "",
     surname_en: "",
     position_en: "",
-    logo_en: '',
+    logo_en: "",
   });
+  const [loadingimage, setLoadingimage] = useState(false);
+  useEffect(() => {
+    setLoadingimage(true);
+    setTimeout(() => {
+      setLoadingimage(false);
+    }, 5000);
+  }, []);
+
   useEffect(() => {
     getData();
   }, []);
@@ -33,23 +42,22 @@ function Teams() {
   const getData = async () => {
     console.log("fetch");
     await axios
-      .get<DeleteTeamsModels>(`https://api-at.onrender.com/api/v1/teams/getteams`)
+      .get<DeleteTeamsModels>(
+        `https://api-at.onrender.com/api/v1/teams/getteams`
+      )
       .then((result) => {
         console.log(result);
         setloading(false);
         setstate(result.data);
       });
   };
-const pageSize =10;
-let currentPage =1;
+  const pageSize = 10;
+  let currentPage = 1;
   const columns = [
     {
       title: "ລະດັບ",
       key: `_id`,
-      render: (text, record, index) => (
-        currentPage-1
-        
-      )*pageSize+index+1
+      render: (text, record, index) => (currentPage - 1) * pageSize + index + 1,
     },
     {
       title: "ຊື່",
@@ -82,7 +90,13 @@ let currentPage =1;
       title: "ຮູບພາບ",
       dataIndex: "logo_en",
       render: (record: Datum) => (
-        <Avatar imageSrc={`https://api-at.onrender.com/${record}`} size={100} />
+        <img
+          className={`${loadingimage ? "" : "image-fade-in"}`}
+          src={`https://api-at.onrender.com/${record}`}
+          alt="Image"
+          onLoad={() => setLoadingimage(false)}
+          style={{ width: "100px", height: "100px" }}
+        />
       ),
     },
 
@@ -97,23 +111,26 @@ let currentPage =1;
           >
             ລົບ
           </Button>
-          <Button className="bg-green-500 hover:bg-blue-700 text-white font-bold  rounded"
-          onClick={()=>{
-            setFormData({
-              _id: record._id || '',
-              name_en: record.name_en || '',
-              surname_en: record.surname_en||"",
-              position_en:record.position_en|| "",
-              logo_en: record.logo_en||'',
-            })
-            handleAddTeamEdit(record._id)}}>
+          <Button
+            className="bg-green-500 hover:bg-blue-700 text-white font-bold  rounded"
+            onClick={() => {
+              setFormData({
+                _id: record._id || "",
+                name_en: record.name_en || "",
+                surname_en: record.surname_en || "",
+                position_en: record.position_en || "",
+                logo_en: record.logo_en || "",
+              });
+              handleAddTeamEdit(record._id);
+            }}
+          >
             ແກ້ໄຂ
           </Button>
         </Space>
       ),
     },
   ];
-//insert data
+  //insert data
   const handleAddTeam = () => {
     setFormTeamVisible(true);
   };
@@ -121,7 +138,7 @@ let currentPage =1;
   const handleFormTeamsClose = () => {
     setFormTeamVisible(false);
   };
-//Edit
+  //Edit
   const handleAddTeamEdit = (itemId) => {
     setFormTeamEditVisible(true);
   };
@@ -172,11 +189,16 @@ let currentPage =1;
       </div>
 
       <div className="flex-1 overflow-y-auto padding-16px">
-        <Table loading={loading} columns={columns} dataSource={state?.data} pagination={{
-          onChange:(page)=>{
-            currentPage = page
-          }
-        }}/>
+        <Table
+          loading={loading}
+          columns={columns}
+          dataSource={state?.data}
+          pagination={{
+            onChange: (page) => {
+              currentPage = page;
+            },
+          }}
+        />
       </div>
 
       <Modal
@@ -196,7 +218,11 @@ let currentPage =1;
         footer={null}
         destroyOnClose={true}
       >
-        <EditFormTeams data={formData} Setdata={setFormData} onClose={handleFormTeamsEditClose} />
+        <EditFormTeams
+          data={formData}
+          Setdata={setFormData}
+          onClose={handleFormTeamsEditClose}
+        />
       </Modal>
 
       <Modal
@@ -225,6 +251,20 @@ let currentPage =1;
           display: flex;
           flex-direction: column;
         }
+        .image-fade-in {
+          opacity: 0;
+          animation: fadeIn 3s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        
         // ... your other styles ...
       `}</style>
     </div>

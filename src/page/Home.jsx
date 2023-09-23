@@ -11,6 +11,7 @@ function Home() {
   const [formEditHomeVisible, setFormEditHomeVisible] = useState(false);
   const [deleteConfirmVisible, setDeleteConfirmVisible] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
+  const [loadingimage, setLoadingimage] = useState(false);
   const [formData, setFormData] = useState({
     _id: "",
     name: "",
@@ -52,14 +53,28 @@ let currentPage =1;
       title: "ຮູບພາບທີ1",
       dataIndex: "logo_en",
       render: (logo_en) => (
-        <img className="w-20"loading="lazy"  src={`https://api-at.onrender.com/${logo_en}`} />
+        <img
+        className={`${loadingimage ? "" : "image-fade-in"}`}
+        
+        src={`https://api-at.onrender.com/${logo_en}`}
+        alt="Image"
+        onLoad={() => setLoadingimage(false)} 
+        style={{ width: '120px', height: '90px'}}
+      />
       ),
     },
     {
       title: "ຮູບພາບທີ2",
       dataIndex: "image_en",
       render: (image_en) => (
-        <img className="w-20" loading="lazy" src={`https://api-at.onrender.com/${image_en}`} />
+        <img
+        className={`${loadingimage ? "" : "image-fade-in"}`}
+        
+        src={`https://api-at.onrender.com/${image_en}`}
+        alt="Image"
+        onLoad={() => setLoadingimage(false)} 
+        style={{ width: '100px', height: '100px' ,background:'gray'}}
+      />
       ),
     },
     {

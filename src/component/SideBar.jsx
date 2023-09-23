@@ -15,6 +15,7 @@ const SideBar = () => {
   const navigation = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
 
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -120,5 +121,7 @@ const SideBar = () => {
       </Layout>
     </Layout>
   );
+
+
 };
 export default SideBar;
