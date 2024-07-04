@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Space, Table, Button, Modal } from "antd";
 import axios from "axios";
 import InsertFormCutomer from "../component/Popup/InsertFormCustomer";
@@ -106,6 +106,7 @@ function Customer() {
   };
   //edit
   const handleAddCustomerEdit = (itemid) => {
+    console.log(itemid)
     setFormEditCustomerVisible(true);
   };
 
@@ -204,7 +205,7 @@ function Customer() {
         ທ່ານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່?
       </Modal>
 
-      <style jsx>{`
+      <style>{`
         .service-container {
           height: 100%; /* Set the desired height here */
           overflow: auto; /* Add scrollbars if content overflows the container */

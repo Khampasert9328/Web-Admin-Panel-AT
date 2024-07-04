@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Form, Input } from "antd";
 import axios from "axios";
+import PropTypes from "prop-types"; // Ensure PropTypes is imported correctly
 
 const MyFormComponent = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,6 @@ const MyFormComponent = ({ onClose }) => {
   };
 
   const handleChange = (changedValues) => {
-    // Update the form data when any field changes
     setFormData({
       ...formData,
       ...changedValues,
@@ -28,23 +28,17 @@ const MyFormComponent = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      // Create a FormData object to send the file and other form data
       const formDataToSend = new FormData();
       formDataToSend.append("name_en", formData.name_en);
       formDataToSend.append("surname_en", formData.surname_en);
       formDataToSend.append("position_en", formData.position_en);
       formDataToSend.append("logo_en", formData.logo_en);
 
-      // Send a POST request with Axios
       await axios.post(`https://api-at.onrender.com/api/v1/teams/insertteams?language=en`, formDataToSend);
 
-      // Handle success, e.g., show a success message
       console.log("Data submitted successfully!");
-
-      // Close the form or perform other actions (e.g., reset form fields)
       onClose();
     } catch (error) {
-      // Handle error, e.g., show an error message
       console.error("Error submitting data:", error);
     }
   };
@@ -56,7 +50,7 @@ const MyFormComponent = ({ onClose }) => {
       labelAlign="left"
       labelWrap
       colon={false}
-      onValuesChange={handleChange} // This event handler will be called when form fields change
+      onValuesChange={handleChange}
     >
       <Form.Item label="ຊື່" name="name_en" rules={[{ required: true }]}>
         <Input />
@@ -77,13 +71,18 @@ const MyFormComponent = ({ onClose }) => {
           type="primary"
           htmlType="button"
           style={{ backgroundColor: "green" }}
-          onClick={handleSubmit} // This will submit the form data when the button is clicked
+          onClick={handleSubmit}
         >
           ບັນທຶກ
         </Button>
       </Form.Item>
     </Form>
   );
+};
+
+// Define prop types for your component
+MyFormComponent.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default MyFormComponent;

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { Button, Form, Input } from "antd";
 import axios from "axios";
+
 
 const InsertFormCutomer = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -77,6 +79,10 @@ const InsertFormCutomer = ({ onClose }) => {
       </Form.Item>
     </Form>
   );
+};
+
+InsertFormCutomer.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default InsertFormCutomer;

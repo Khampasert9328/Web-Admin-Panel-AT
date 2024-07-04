@@ -1,4 +1,3 @@
-import React from "react";
 
 const Avatar = ({ imageSrc, size = 50 }) => {
   return (

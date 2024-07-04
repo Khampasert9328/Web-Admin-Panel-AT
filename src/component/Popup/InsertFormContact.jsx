@@ -1,28 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 import { Button, Form, Input } from "antd";
 import axios from "axios";
 
-const InsertFormContact = ({ onClose }) => {
+const InsertFormHome = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    tell_en: "",
-    email_en: "",
-    facebook_en: "",
-    location_en: "",
-    logo_en: "",
+    name: "",
+    logo: null,
+    image: null,
   });
 
   const handleImage1 = (e) => {
     const file = e.target.files[0];
     setFormData({
       ...formData,
-      logo_en: file,
+      logo: file,
     });
   };
 
-  
+  const handleImage2 = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      image: file,
+    });
+  };
 
   const handleChange = (changedValues) => {
-    // Update the form data when any field changes
     setFormData({
       ...formData,
       ...changedValues,
@@ -31,31 +35,22 @@ const InsertFormContact = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      // Create a FormData object to send the file and other form data
       const formDataToSend = new FormData();
-      formDataToSend.append("tell_en", formData.tell_en);
-      formDataToSend.append("email_en", formData.email_en);
-      formDataToSend.append("facebook_en", formData.facebook_en);
-      formDataToSend.append("location_en", formData.location_en);
-      formDataToSend.append("logo_en", formData.logo_en);
-  
-      // Send a POST request with Axios
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("logo", formData.logo);
+      formDataToSend.append("image", formData.image);
+
       await axios.post(
-        `https://api-at.onrender.com/api/v1/contact/insertcontact?language=en`,
+        `https://api-at.onrender.com/api/v1/home/inserthome?language=en`,
         formDataToSend
       );
-  
-      // Handle success, e.g., show a success message
+
       console.log("Data submitted successfully!");
-  
-      // Close the form or perform other actions (e.g., reset form fields)
       onClose();
     } catch (error) {
-      // Handle error, e.g., show an error message
       console.error("Error submitting data:", error);
     }
   };
-  
 
   return (
     <Form
@@ -64,28 +59,19 @@ const InsertFormContact = ({ onClose }) => {
       labelAlign="left"
       labelWrap
       colon={false}
-      onValuesChange={handleChange} // This event handler will be called when form fields change
+      onValuesChange={handleChange}
     >
-      <Form.Item label="ເບີໂທ" name="tell_en" rules={[{ required: true }]}>
+      <Form.Item label="ຊື່ບໍລິສັດ" name="name" rules={[{ required: true }]}>
         <Input />
       </Form.Item>
-      <Form.Item label="ອີເມລ" name="email_en" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item label="ເຟສບຸກ" name="facebook_en" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
-      <Form.Item label="ສະຖານທີ່" name="location_en" rules={[{ required: true }]}>
-        <Input />
-      </Form.Item>
-      <input type="file" name="logo_en" onChange={handleImage1} />
-
+      <input type="file" name="logo" onChange={handleImage1} />
+      <input type="file" name="image" onChange={handleImage2} />
       <Form.Item style={{ marginTop: "auto", textAlign: "right" }}>
         <Button
           type="primary"
           htmlType="button"
           style={{ backgroundColor: "green" }}
-          onClick={handleSubmit} // This will submit the form data when the button is clicked
+          onClick={handleSubmit}
         >
           ບັນທຶກ
         </Button>
@@ -94,4 +80,9 @@ const InsertFormContact = ({ onClose }) => {
   );
 };
 
-export default InsertFormContact;
+// Define prop types for your component
+InsertFormHome.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
+
+export default InsertFormHome;

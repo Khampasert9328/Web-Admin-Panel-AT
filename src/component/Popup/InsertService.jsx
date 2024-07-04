@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Form, Input } from "antd";
 import axios from "axios";
-
+import PropTypes from "prop-types";
 const InsertFormService = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name_en: "",
@@ -83,5 +83,8 @@ const InsertFormService = ({ onClose }) => {
     </Form>
   );
 };
-
+// Define prop types for your component
+InsertFormService.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 export default InsertFormService;

@@ -7,7 +7,7 @@ import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
 import AppRoute from "./AppRoute/AppRoute";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Layout, Menu, Button, theme } from "antd";
 const { Header, Sider, Content } = Layout;
 import { useNavigate } from "react-router-dom";

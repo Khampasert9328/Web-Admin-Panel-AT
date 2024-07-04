@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Space, Table, Button, Modal } from "antd";
 import axios from "axios";
 import InsertFormContact from "../component/Popup/InsertFormContact";
@@ -141,6 +141,7 @@ let currentPage =1;
 
   //edit
   const handleAddContactEdit = (itemid) => {
+    console.log(itemid)
     setFormEditContactVisible(true);
   };
 
@@ -234,7 +235,7 @@ let currentPage =1;
         ທ່ານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່?
       </Modal>
 
-      <style jsx>{`
+      <style>{`
         .teams-container {
           height: 100%; /* Set the desired height here */
           overflow: auto; /* Add scrollbars if content overflows the container */

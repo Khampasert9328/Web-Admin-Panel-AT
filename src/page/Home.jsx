@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Space, Table, Button, Modal } from "antd";
 import axios from "axios";
 import InsertFormHome from "../component/Popup/InsertFormHome";
@@ -118,6 +118,7 @@ let currentPage =1;
 
   //Edit
   const handleAddHomeEdit = (itemid) => {
+    console.log(itemid)
     setFormEditHomeVisible(true);
   };
 
@@ -208,7 +209,7 @@ let currentPage =1;
         ທ່ານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່?
       </Modal>
 
-      <style jsx>{`
+      <style >{`
         .teams-container {
           height: 100%; /* Set the desired height here */
           overflow: auto; /* Add scrollbars if content overflows the container */

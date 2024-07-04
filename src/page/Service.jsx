@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Space, Table, Button, Modal } from "antd";
 import axios from "axios";
 import InsertFormService from "../component/Popup/InsertService";
@@ -118,6 +118,7 @@ let currentPage =1;
 
   //edit
   const handleAddServiceEdit = (itemid) => {
+    console.log(itemid)
     setFormEditServiceVisible(true);
   };
 
@@ -212,7 +213,7 @@ let currentPage =1;
         ທ່ານຕ້ອງການລົບຂໍ້ມູນນີ້ແທ້ ຫຼື ບໍ່?
       </Modal>
 
-      <style jsx>{`
+      <style >{`
         .service-container {
           height: 100%; /* Set the desired height here */
           overflow: auto; /* Add scrollbars if content overflows the container */
